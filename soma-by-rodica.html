@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOMA by Rodica — Personal Training · Southampton, NY</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@200;300;400;500;700&family=Playfair+Display:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --orange:#e8541a;
+  --orange-deep:#c4420f;
+  --orange-pale:#fff4ee;
+  --orange-soft:#fde8dc;
+  --white:#ffffff;
+  --off-white:#fdf8f5;
+  --warm-gray:#f5efe9;
+  --text:#2a1f1a;
+  --text-mid:#6b4f42;
+  --text-light:#b08070;
+  --border:#f0ddd4;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Montserrat',sans-serif;background:var(--off-white);color:var(--text);font-weight:300;overflow-x:hidden;}
+a{text-decoration:none;color:inherit;}
+
+/* NAV */
+nav{background:var(--white);padding:0 3rem;height:80px;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--orange);position:sticky;top:0;z-index:100;}
+.nav-logo img{height:54px;width:auto;display:block;}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+.nav-links a{font-size:0.63rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-mid);font-weight:400;transition:color .2s;}
+.nav-links a:hover{color:var(--orange);}
+.nav-cta{background:var(--orange);color:var(--white);padding:0.6rem 1.6rem;font-family:'Montserrat',sans-serif;font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:500;border:none;cursor:pointer;transition:background .2s;border-radius:2px;display:inline-block;}
+.nav-cta:hover{background:var(--orange-deep);}
+
+/* PAGE SECTIONS */
+.page-section{display:none;}
+.page-section.active{display:block;}
+
+/* HERO */
+.hero{background:var(--white);min-height:88vh;display:grid;grid-template-columns:1fr 1fr;overflow:hidden;}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:6rem 4rem 6rem 3.5rem;}
+.hero-tag{display:inline-flex;align-items:center;gap:0.75rem;font-size:0.58rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--orange);margin-bottom:2rem;font-weight:500;}
+.hero-tag::before{content:'';width:28px;height:2px;background:var(--orange);}
+.hero-h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,6vw,6rem);line-height:0.95;letter-spacing:0.03em;color:var(--text);margin-bottom:0.75rem;}
+.hero-h1 span{color:var(--orange);}
+.hero-italic{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.1rem,2vw,1.6rem);color:var(--text-mid);margin-bottom:1.5rem;}
+.hero-desc{font-size:0.88rem;color:var(--text-mid);line-height:2;max-width:420px;margin-bottom:2.5rem;font-weight:300;}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem;}
+.btn-orange{background:var(--orange);color:var(--white);padding:0.95rem 2.2rem;font-family:'Montserrat',sans-serif;font-size:0.63rem;letter-spacing:0.22em;text-transform:uppercase;font-weight:500;border:none;cursor:pointer;transition:background .2s;display:inline-block;border-radius:2px;}
+.btn-orange:hover{background:var(--orange-deep);}
+.btn-outline{background:transparent;color:var(--orange);padding:0.95rem 1.8rem;font-family:'Montserrat',sans-serif;font-size:0.63rem;letter-spacing:0.22em;text-transform:uppercase;font-weight:500;border:2px solid var(--orange);cursor:pointer;transition:all .2s;display:inline-block;border-radius:2px;}
+.btn-outline:hover{background:var(--orange);color:var(--white);}
+.hero-stat-row{display:flex;gap:2.5rem;padding-top:2rem;border-top:1px solid var(--border);}
+.hero-stat .num{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--orange);display:block;line-height:1;}
+.hero-stat .lbl{font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-light);margin-top:0.2rem;display:block;}
+.hero-right{background:var(--orange-pale);display:flex;align-items:center;justify-content:center;padding:3rem;position:relative;overflow:hidden;}
+.hero-right-bg{position:absolute;font-family:'Bebas Neue',sans-serif;font-size:20rem;color:rgba(232,84,26,0.06);user-select:none;white-space:nowrap;top:50%;left:50%;transform:translate(-50%,-50%);}
+.hero-card{position:relative;z-index:2;background:var(--white);padding:3rem 2.5rem;text-align:center;width:320px;box-shadow:0 8px 40px rgba(232,84,26,0.1);}
+.hero-card-logo{width:160px;margin:0 auto 1.5rem;}
+.hero-card-logo img{width:100%;height:auto;}
+.hero-card-name{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:0.08em;color:var(--text);margin-bottom:0.25rem;}
+.hero-card-title{font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--orange);margin-bottom:1.5rem;}
+.hero-card-divider{width:40px;height:2px;background:var(--orange);margin:0 auto 1.5rem;}
+.hero-card-stat-row{display:flex;justify-content:center;gap:2rem;}
+.hero-card-stat .n{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--orange);display:block;line-height:1;}
+.hero-card-stat .l{font-size:0.5rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-light);}
+.olympic-badge{margin-top:1.5rem;background:var(--orange-soft);border:1px solid rgba(232,84,26,0.2);padding:0.6rem 1rem;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--orange);font-weight:500;}
+
+/* BAND */
+.band{background:var(--orange);padding:1.1rem 3rem;display:flex;justify-content:center;align-items:center;gap:2.5rem;flex-wrap:wrap;}
+.band-item{font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.9);font-weight:500;white-space:nowrap;}
+.band-dot{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,0.35);flex-shrink:0;}
+
+/* SHARED SECTION STYLES */
+.section-wrap{max-width:1000px;margin:0 auto;}
+.eyebrow{font-size:0.58rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--orange);margin-bottom:1.25rem;font-weight:500;display:flex;align-items:center;gap:0.75rem;}
+.eyebrow::before{content:'';width:20px;height:2px;background:var(--orange);}
+.eyebrow.center{justify-content:center;}
+.eyebrow.center::before{display:none;}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.2rem,3.5vw,3.5rem);letter-spacing:0.04em;color:var(--text);line-height:1;margin-bottom:1.25rem;}
+.section-title span{color:var(--orange);}
+.section-body{font-size:0.88rem;color:var(--text-mid);line-height:2;margin-bottom:1.25rem;font-weight:300;}
+
+/* ABOUT PAGE */
+.about-page{background:var(--off-white);padding:6rem 3rem;}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+.about-visual{position:relative;}
+.about-visual-box{background:var(--orange-soft);height:500px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.about-visual-logo{width:200px;opacity:0.25;}
+.about-visual-logo img{width:100%;}
+.about-visual-initials{font-family:'Bebas Neue',sans-serif;font-size:9rem;color:var(--orange);opacity:0.15;position:absolute;}
+.about-info-strip{background:var(--orange);color:var(--white);padding:1.25rem 1.5rem;display:grid;grid-template-columns:repeat(3,1fr);text-align:center;gap:1px;}
+.about-info-item .n{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;display:block;line-height:1;}
+.about-info-item .l{font-size:0.5rem;letter-spacing:0.15em;text-transform:uppercase;opacity:0.8;margin-top:0.2rem;display:block;}
+.about-text-block{padding-top:0.5rem;}
+.about-quote{border-left:3px solid var(--orange);padding:1.25rem 0 1.25rem 1.5rem;margin:2rem 0;}
+.about-quote p{font-family:'Playfair Display',serif;font-style:italic;font-size:1.1rem;color:var(--text);line-height:1.7;}
+.about-chip{display:inline-flex;align-items:center;gap:0.6rem;background:var(--orange-soft);border:1px solid rgba(232,84,26,0.25);padding:0.55rem 1rem;margin-bottom:1.5rem;border-radius:2px;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--orange);font-weight:500;}
+
+/* SERVICES PAGE */
+.services-page{background:var(--white);padding:6rem 3rem;}
+.services-intro{text-align:center;max-width:620px;margin:0 auto 4rem;}
+.services-intro .section-body{font-size:0.88rem;}
+.services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;margin-bottom:4rem;}
+.service-card{background:var(--off-white);padding:2.5rem 2rem;border-top:3px solid var(--border);transition:all .3s;border-radius:2px;}
+.service-card:hover{border-top-color:var(--orange);background:var(--orange-pale);}
+.service-icon{font-size:2rem;margin-bottom:1rem;}
+.service-name{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:0.04em;color:var(--text);margin-bottom:0.75rem;}
+.service-desc{font-size:0.85rem;color:var(--text-mid);line-height:2;font-weight:300;}
+.services-tagline{background:var(--orange);color:var(--white);padding:3rem;text-align:center;border-radius:2px;}
+.services-tagline h3{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:0.06em;margin-bottom:0.75rem;}
+.services-tagline p{font-size:0.85rem;opacity:0.85;line-height:1.9;max-width:560px;margin:0 auto 1.5rem;}
+
+/* CONTACT PAGE */
+.contact-page{background:var(--off-white);padding:6rem 3rem;}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+.contact-card{display:flex;align-items:center;gap:1rem;padding:1.25rem;background:var(--white);border-radius:2px;margin-bottom:1rem;border-left:3px solid var(--orange);}
+.contact-card-icon{font-size:1.2rem;flex-shrink:0;}
+.contact-card-label{font-size:0.52rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-light);}
+.contact-card-value{font-size:0.88rem;color:var(--text);font-weight:400;margin-top:0.15rem;}
+.cta-box{background:var(--orange);padding:3rem 2.5rem;text-align:center;border-radius:2px;}
+.cta-box-title{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;letter-spacing:0.06em;color:var(--white);margin-bottom:0.75rem;}
+.cta-box-sub{font-size:0.85rem;color:rgba(255,255,255,0.8);line-height:1.9;margin-bottom:2rem;font-weight:300;}
+.btn-white{background:var(--white);color:var(--orange);padding:0.95rem 2rem;font-family:'Montserrat',sans-serif;font-size:0.63rem;letter-spacing:0.22em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;transition:all .2s;display:inline-block;border-radius:2px;width:100%;text-align:center;}
+.btn-white:hover{background:var(--off-white);}
+
+/* FOOTER */
+footer{background:var(--text);padding:2.5rem 3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+.footer-brand{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.15em;color:rgba(255,255,255,0.3);}
+.footer-brand span{color:var(--orange);}
+.footer-links{display:flex;gap:2rem;}
+.footer-links a{font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.25);transition:color .2s;}
+.footer-links a:hover{color:var(--orange);}
+.footer-copy{font-size:0.58rem;color:rgba(255,255,255,0.15);}
+
+@media(max-width:900px){
+  nav{padding:0 1.5rem;}
+  .nav-links{display:none;}
+  .hero{grid-template-columns:1fr;}
+  .hero-right{display:none;}
+  .hero-left{padding:4rem 1.5rem 3rem;}
+  .about-grid{grid-template-columns:1fr;}
+  .about-page{padding:4rem 1.5rem;}
+  .services-page{padding:4rem 1.5rem;}
+  .services-grid{grid-template-columns:1fr;}
+  .contact-page{padding:4rem 1.5rem;}
+  .contact-grid{grid-template-columns:1fr;gap:3rem;}
+  footer{padding:2rem 1.5rem;flex-direction:column;align-items:flex-start;}
+}
+@media(max-width:600px){
+  .hero-actions{flex-direction:column;align-items:flex-start;}
+  .hero-stat-row{gap:1.5rem;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <img src="data:image/png;base64,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" alt="SOMA by Rodica">
+  </div>
+  <ul class="nav-links">
+    <li><a href="#" onclick="showPage('home');return false;">Home</a></li>
+    <li><a href="#" onclick="showPage('about');return false;">About Rodica</a></li>
+    <li><a href="#" onclick="showPage('services');return false;">Services</a></li>
+    <li><a href="#" onclick="showPage('contact');return false;">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="#" onclick="showPage('contact');return false;">Get Started</a>
+</nav>
+
+<!-- HOME PAGE -->
+<div id="page-home" class="page-section active">
+  <section class="hero">
+    <div class="hero-left">
+      <p class="hero-tag">Science Of Movement Applied</p>
+      <h1 class="hero-h1">FEEL <span>STRONG.</span><br>MOVE <span>FREE.</span><br>LIVE WELL.</h1>
+      <p class="hero-italic">with Rodica Matthews</p>
+      <p class="hero-desc">No matter your age, your fitness level, or how long it has been since you last worked out, Rodica meets you exactly where you are and takes you further than you thought possible. Training in Southampton, NY since 2007.</p>
+      <div class="hero-actions">
+        <a class="btn-orange" href="#" onclick="showPage('contact');return false;">Book a Free Consult</a>
+        <a class="btn-outline" href="#" onclick="showPage('about');return false;">Meet Rodica</a>
+      </div>
+      <div class="hero-stat-row">
+        <div class="hero-stat"><span class="num">5.0★</span><span class="lbl">Google Rating</span></div>
+        <div class="hero-stat"><span class="num">20+</span><span class="lbl">Years Experience</span></div>
+        <div class="hero-stat"><span class="num">🏅</span><span class="lbl">Olympic Athlete</span></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-right-bg" aria-hidden="true">SOMA</div>
+      <div class="hero-card">
+        <div class="hero-card-logo"><img src="data:image/png;base64,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" alt="SOMA logo"></div>
+        <div class="hero-card-name">Rodica Matthews</div>
+        <div class="hero-card-title">Olympic Athlete &amp; Personal Trainer</div>
+        <div class="hero-card-divider"></div>
+        <div class="hero-card-stat-row">
+          <div class="hero-card-stat"><span class="n">5.0★</span><span class="l">Rating</span></div>
+          <div class="hero-card-stat"><span class="n">20+</span><span class="l">Years</span></div>
+          <div class="hero-card-stat"><span class="n">All</span><span class="l">Ages</span></div>
+        </div>
+        <div class="olympic-badge">Olympic High Diver — Romania</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="band">
+    <span class="band-item">Personal Training</span>
+    <span class="band-dot"></span>
+    <span class="band-item">Group Classes</span>
+    <span class="band-dot"></span>
+    <span class="band-item">Weight Loss</span>
+    <span class="band-dot"></span>
+    <span class="band-item">All Ages Welcome</span>
+    <span class="band-dot"></span>
+    <span class="band-item">All Fitness Levels</span>
+    <span class="band-dot"></span>
+    <span class="band-item">Southampton, NY</span>
+  </div>
+
+  <section style="background:var(--white);padding:6rem 3rem;">
+    <div class="section-wrap">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
+        <div>
+          <p class="eyebrow">Who We Are</p>
+          <h2 class="section-title">FITNESS FOR <span>EVERY BODY</span></h2>
+          <p class="section-body">SOMA stands for Science Of Movement Applied. It is the philosophy Rodica has built her entire career around: that movement, done right, heals and transforms people of all ages, sizes, and starting points.</p>
+          <p class="section-body">You do not need to be fit to start. You just need to start. Rodica has worked with complete beginners in their 60s and 70s, competitive athletes looking to sharpen their edge, busy parents trying to get their energy back, and everyone in between.</p>
+          <a class="btn-orange" href="#" onclick="showPage('about');return false;">Read Rodica's Story</a>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <div style="background:var(--orange-pale);padding:2rem;text-align:center;border-radius:2px;">
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--orange);">Private</div>
+            <div style="font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-mid);margin-top:0.25rem;">1 on 1 Training</div>
+          </div>
+          <div style="background:var(--orange-pale);padding:2rem;text-align:center;border-radius:2px;">
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--orange);">Group</div>
+            <div style="font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-mid);margin-top:0.25rem;">Classes</div>
+          </div>
+          <div style="background:var(--orange-pale);padding:2rem;text-align:center;border-radius:2px;">
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--orange);">All</div>
+            <div style="font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-mid);margin-top:0.25rem;">Ages Welcome</div>
+          </div>
+          <div style="background:var(--orange-pale);padding:2rem;text-align:center;border-radius:2px;">
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--orange);">20+</div>
+            <div style="font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-mid);margin-top:0.25rem;">Years Experience</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--warm-gray);padding:5rem 3rem;">
+    <div class="section-wrap" style="text-align:center;">
+      <p class="eyebrow center">What Clients Say</p>
+      <h2 class="section-title" style="text-align:center;margin-bottom:3rem;">PEOPLE <span>LOVE</span> RODICA</h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:800px;margin:0 auto 3rem;">
+        <div style="background:var(--white);padding:2rem;border-left:3px solid var(--orange);border-radius:2px;text-align:left;">
+          <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:1rem;color:var(--text);line-height:1.8;margin-bottom:1.25rem;">"Rodica completely changed how I think about my body. I came in nervous, completely out of shape, and she made me feel welcome from day one. A year later I am stronger than I have ever been in my life."</p>
+          <div style="display:flex;align-items:center;gap:0.75rem;"><div style="width:32px;height:32px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;font-size:0.65rem;color:var(--white);font-weight:600;flex-shrink:0;">JM</div><div><div style="color:var(--orange);font-size:0.65rem;">★★★★★</div><div style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-mid);">Google Review</div></div></div>
+        </div>
+        <div style="background:var(--white);padding:2rem;border-left:3px solid var(--orange);border-radius:2px;text-align:left;">
+          <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:1rem;color:var(--text);line-height:1.8;margin-bottom:1.25rem;">"I am 68 years old and I was certain fitness was behind me. Rodica proved me completely wrong. She is patient, brilliant, and genuinely cares about every single person she trains."</p>
+          <div style="display:flex;align-items:center;gap:0.75rem;"><div style="width:32px;height:32px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;font-size:0.65rem;color:var(--white);font-weight:600;flex-shrink:0;">SL</div><div><div style="color:var(--orange);font-size:0.65rem;">★★★★★</div><div style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-mid);">Google Review</div></div></div>
+        </div>
+      </div>
+      <a class="btn-orange" href="#" onclick="showPage('contact');return false;">Start Your Journey Today</a>
+    </div>
+  </section>
+</div>
+
+<!-- ABOUT PAGE -->
+<div id="page-about" class="page-section">
+  <section class="about-page">
+    <div class="section-wrap">
+      <div class="about-grid">
+        <div class="about-visual">
+          <div class="about-visual-box">
+            <div class="about-visual-initials">RM</div>
+            <div class="about-visual-logo"><img src="data:image/png;base64,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" alt="SOMA"></div>
+          </div>
+          <div class="about-info-strip">
+            <div class="about-info-item"><span class="n">20+</span><span class="l">Years Experience</span></div>
+            <div class="about-info-item"><span class="n">5.0★</span><span class="l">Google Rating</span></div>
+            <div class="about-info-item"><span class="n">🏅</span><span class="l">Olympic Athlete</span></div>
+          </div>
+        </div>
+        <div class="about-text-block">
+          <p class="eyebrow">Meet Rodica</p>
+          <h2 class="section-title">AN <span>OLYMPIAN</span><br>IN YOUR CORNER</h2>
+          <div class="about-chip">🏅 Olympic High Diver — Romania</div>
+
+          <p class="section-body">Rodica Matthews grew up in Romania where she trained as a competitive high diver, eventually representing her country at the Olympic level. The discipline, focus, and deep understanding of the human body that sport demands became the foundation for everything she does today.</p>
+
+          <p class="section-body">After relocating to the United States, Rodica turned her athletic expertise into a calling. She founded SOMA — Science Of Movement Applied — as a way to bring real, research-backed training to everyday people in Southampton and the surrounding Hamptons community.</p>
+
+          <div class="about-quote">
+            <p>"I believe every single person has an athlete inside them. My job is to find that person and bring them out."</p>
+          </div>
+
+          <p class="section-body">What sets Rodica apart is not just her Olympic background. It is her warmth. Her clients describe her as endlessly encouraging, genuinely invested, and the kind of trainer who remembers your name, your goals, and your story. She does not run cookie-cutter programs. She listens, she adapts, and she shows up for you every time.</p>
+
+          <p class="section-body">She has worked with people in their teens and people in their seventies. She has helped new moms rebuild their strength, helped retirees rediscover mobility they thought was gone, and pushed competitive athletes past plateaus they could not crack on their own. No matter where you are starting from, Rodica has been there with someone just like you.</p>
+
+          <a class="btn-orange" href="#" onclick="showPage('services');return false;">See All Programs</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- SERVICES PAGE -->
+<div id="page-services" class="page-section">
+  <section class="services-page">
+    <div class="section-wrap">
+      <div class="services-intro">
+        <p class="eyebrow center">What We Offer</p>
+        <h2 class="section-title" style="text-align:center;">TRAINING FOR <span>EVERY GOAL</span></h2>
+        <p class="section-body" style="text-align:center;">SOMA is for everyone. Young, older, just starting out, or coming back after years away. Rodica has a program that fits your life and your body right now.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">🏋️</div>
+          <h3 class="service-name">Private Training</h3>
+          <p class="service-desc">One on one sessions with Rodica built entirely around you. Your goals, your pace, your schedule. This is the most direct path to transformation because every minute of every session is focused on exactly what your body needs. Beginners are absolutely welcome. In fact, many of Rodica's most devoted clients started with zero fitness experience and no idea where to begin.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">👥</div>
+          <h3 class="service-name">Group Classes</h3>
+          <p class="service-desc">There is something powerful about training with other people. Rodica's group classes are energetic, fun, and welcoming to all fitness levels. You will push harder than you would alone, laugh along the way, and leave feeling like part of a community. Classes are kept small so Rodica can give real attention to every participant in the room.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🎯</div>
+          <h3 class="service-name">Weight Loss Programs</h3>
+          <p class="service-desc">Real, lasting weight loss comes from understanding your body, not from punishing it. Rodica builds programs that combine movement, strength work, and smart habits to help you reach and stay at a healthy weight. No crash diets. No unrealistic expectations. Just steady, sustainable progress that you can actually maintain for the rest of your life.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🧘</div>
+          <h3 class="service-name">Flexibility and Mobility</h3>
+          <p class="service-desc">This is one of the most overlooked parts of fitness, and one of the most important. Whether you are dealing with stiffness, recovering from an injury, or simply want to move through your day with more ease and less pain, Rodica's mobility work draws on her Olympic training background to restore and improve how your body moves.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">💪</div>
+          <h3 class="service-name">Strength and Conditioning</h3>
+          <p class="service-desc">Building strength is not just for young people or athletes. Strong muscles protect your joints, improve your posture, boost your metabolism, and make every part of daily life easier. Rodica designs strength programs that are appropriate for your current level and progress at a rate that challenges you without overwhelming you.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🥗</div>
+          <h3 class="service-name">Nutrition Guidance</h3>
+          <p class="service-desc">Exercise and nutrition go hand in hand. Rodica offers practical, personalized guidance on fueling your body to support your training, your energy levels, and your long term health. This is not about strict meal plans or eliminating everything you love. It is about understanding what your body needs and making choices that feel good and sustainable.</p>
+        </div>
+      </div>
+
+      <div class="services-tagline">
+        <h3>NOT SURE WHERE TO START?</h3>
+        <p>That is completely okay. Rodica offers a free first consultation where you can come in, talk about your goals, ask every question you have, and get a feel for whether SOMA is right for you. There is no pressure and no commitment. Just an honest conversation about where you are and where you want to go.</p>
+        <a class="btn-white" href="#" onclick="showPage('contact');return false;">Book Your Free Consultation</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- CONTACT PAGE -->
+<div id="page-contact" class="page-section">
+  <section class="contact-page">
+    <div class="section-wrap">
+      <div class="contact-grid">
+        <div>
+          <p class="eyebrow">Get In Touch</p>
+          <h2 class="section-title">LET'S <span>TALK</span></h2>
+          <p class="section-body">Reaching out is the hardest part. After that, everything gets easier. Give Rodica a call, send an email, or simply stop by the studio. She would love to hear from you.</p>
+          <div class="contact-card">
+            <div class="contact-card-icon">📞</div>
+            <div><div class="contact-card-label">Phone</div><div class="contact-card-value">(631) 488-4500</div></div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card-icon">✉️</div>
+            <div><div class="contact-card-label">Email</div><div class="contact-card-value">rodanina@yahoo.com</div></div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card-icon">📍</div>
+            <div><div class="contact-card-label">Studio Location</div><div class="contact-card-value">16 Hill St, Unit 1, Southampton, NY 11968</div></div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card-icon">🕐</div>
+            <div><div class="contact-card-label">Hours</div><div class="contact-card-value">Open Daily through 7:00 PM</div></div>
+          </div>
+        </div>
+        <div>
+          <div class="cta-box">
+            <div class="cta-box-title">YOUR FREE CONSULTATION</div>
+            <p class="cta-box-sub">Come meet Rodica. Tell her where you are, what you want, and what has gotten in the way before. She will be honest with you about what is possible and how to get there. No hard sell. No pressure. Just a real conversation with someone who genuinely wants to help you.</p>
+            <a class="btn-white" href="tel:6314884500">Call (631) 488-4500</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="footer-brand"><span>S O M A</span> by Rodica &middot; Southampton, NY</div>
+  <div class="footer-links">
+    <a href="tel:6314884500">(631) 488-4500</a>
+    <a href="mailto:rodanina@yahoo.com">rodanina@yahoo.com</a>
+  </div>
+  <div class="footer-copy">&copy; 2025 SOMA by Rodica. All rights reserved.</div>
+</footer>
+
+<script>
+function showPage(name) {
+  document.querySelectorAll('.page-section').forEach(function(el){
+    el.classList.remove('active');
+  });
+  document.getElementById('page-' + name).classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+</script>
+
+</body>
+</html>
